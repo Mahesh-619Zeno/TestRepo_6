@@ -38,7 +38,7 @@ public class LogAggregator {
         File dir = new File(LOG_DIR);
         File outFile = new File(AGGREGATED_FILE);
         try {
-            FileWriter out = new FileWriter(outFile);
+            FileWriter out = new FileWriter(outFile, true);
             for (File f : dir.listFiles()) {
                 FileReader in = new FileReader(f);
                 int c;
