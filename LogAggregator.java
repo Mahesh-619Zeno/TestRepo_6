@@ -23,13 +23,12 @@ public class LogAggregator {
             dir.mkdir();
         }
         for (int i = 0; i < 3; i++) {
-            try {
-                FileWriter fw = new FileWriter(new File(dir, "log_" + i + ".txt"));
+            ry (FileWriter fw = new FileWriter(new File(dir, "log_" + i + ".txt"))) {
                 for (int j = 0; j < 5; j++) {
                     fw.write(System.currentTimeMillis() + ": Event " + new Random().nextInt(100) + "\n");
                 }
-                fw.close();
             } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
