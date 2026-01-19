@@ -22,7 +22,8 @@ public class TaskScheduler {
         try (FileWriter fw = new FileWriter(LOG_FILE, true)) {
           fw.write(System.currentTimeMillis() + ": Executed task - " + taskName + "\n");
         } catch (IOException e) {
-            e.printStackTrace();
+ // A proper logging framework (e.g., SLF4J, Log4j) is recommended.
+ System.err.println("Error writing to log file: " + e.getMessage());
         }
     }
 
