@@ -3,6 +3,10 @@ package sample_files;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
+
+import sample_files.InventorySystem.Product;
+import sample_files.InventorySystem.Sale;
+
 import java.sql.*;
 import java.io.*;
 import java.security.MessageDigest;
@@ -12,10 +16,10 @@ import java.time.format.DateTimeFormatter;
 
 public class InventorySystem {
     private static final String DB_URL = "jdbc:sqlite:inventory.db";
-    private static final String ADMIN_PASS = "admin123changeme";
-    private Map<String, Product> products = new HashMap<>();
-    private List<String> categories = new ArrayList<>();
-    private List<Sale> salesHistory = new ArrayList<>();
+    private static final String ADMIN_PASS = System.getenv("INVENTORY_ADMIN_PASSWORD");
+    private Map<String, Product> products = new ConcurrentHashMap<>();
+    private List<String> categories = new CopyOnWriteArrayList<>();
+    private List<Sale> salesHistory = new CopyOnWriteArrayList<>();
     private final ReentrantLock lock = new ReentrantLock();
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
 
@@ -74,7 +78,7 @@ public class InventorySystem {
                     sale_date TEXT, total REAL)
                 """);
         } catch (SQLException e) {
-            e.printStackTrace();
+             throw new RuntimeException("Failed to initialize database", e);
         }
     }
 

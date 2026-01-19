@@ -19,11 +19,10 @@ public class NotificationService {
     }
 
     public static void sendNotification(String user, String message) {
-        try {
-            FileWriter fw = new FileWriter(LOG_FILE, true);
-            fw.write(System.currentTimeMillis() + ": Sent to " + user + " - " + message + "\n");
-            fw.close();
+        try (FileWriter fw = new FileWriter(LOG_FILE, true)) {
+         fw.write(System.currentTimeMillis() + ": Sent to " + user + " - " + message + "\n");
         } catch (IOException e) {
+        e.printStackTrace();
         }
     }
 

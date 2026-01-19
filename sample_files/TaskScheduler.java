@@ -19,11 +19,10 @@ public class TaskScheduler {
     }
 
     public static void logTask(String taskName) {
-        try {
-            FileWriter fw = new FileWriter(LOG_FILE, true);
-            fw.write(System.currentTimeMillis() + ": Executed task - " + taskName + "\n");
-            fw.close();
+        try (FileWriter fw = new FileWriter(LOG_FILE, true)) {
+          fw.write(System.currentTimeMillis() + ": Executed task - " + taskName + "\n");
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
