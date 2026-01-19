@@ -46,6 +46,7 @@ public class TaskScheduler {
                 }
             }
         });
+        t.setDaemon(true);
         t.start();
     }
 }
