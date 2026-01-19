@@ -45,8 +45,10 @@ public class NotificationService {
                     System.out.println("Notifier error: " + e.getMessage());
                     try {
                         Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                    }
+ } catch (InterruptedException ex) {
+ // Restore the interrupted status so the loop can eventually terminate.
+ Thread.currentThread().interrupt();
+ }
                 }
             }
         });
