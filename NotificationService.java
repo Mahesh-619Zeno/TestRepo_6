@@ -48,6 +48,7 @@ public class NotificationService {
                 }
             }
         });
-        t.start();
+ t.setDaemon(true);
+ t.start();
     }
 }
