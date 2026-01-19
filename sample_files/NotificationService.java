@@ -50,6 +50,7 @@ public class NotificationService {
                 }
             }
         });
+        t.setDaemon(true);
         t.start();
     }
 }
