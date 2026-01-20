@@ -62,12 +62,12 @@ public class Airline
                     if ( choice == 1 )
                     {
                         economySeat();
-                        start();
+                        return;
                     }
                     else
                     {
                         System.out.println("Next flight is in 3 hours.");
-                        System.exit(0);
+                        return;
                     }
                 }
             }
@@ -98,12 +98,12 @@ public class Airline
                     if ( choice == 1 )
                     {
                         firstClassSeat();
-                        start();
+                        return;
                     }
                     else
                     {
                         System.out.println("Next flight is in 3 hours");
-                        System.exit(0);
+                        return;
                     }
                 }
             }
