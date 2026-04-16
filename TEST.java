@@ -51,4 +51,10 @@ public class TEST {
  t.setDaemon(true);
  t.start();
     }
+    System.out.println("Notification service started");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+        }
+        System.out.println("Service shutting down");
 }
